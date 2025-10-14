@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 
 const members = JSON.parse(readFileSync("./members.json"));
+const trainers = JSON.parse(readFileSync("./trainers.json"));
 
 // get members
 export const getMembers = (req, res) => {
@@ -54,4 +55,17 @@ export const deleteMember = (req, res) => {
   members.splice(index, 1);
   writeFileSync("./members.json", JSON.stringify(members));
   res.json({ message: "member delete successfully", members });
+};
+
+// get members with their trainers
+export const membersWithTrainers = (req, res) => {
+  let membersWithTrainers = members.map((member) => {
+    let trainer = trainers.find((trainer) => trainer.id == member.trainerId);
+    return {
+      ...member,
+      trainer,
+      trainerId: undefined,
+    };
+  });
+  res.json({ message: "success", membersWithTrainers });
 };

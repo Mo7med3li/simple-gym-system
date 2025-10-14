@@ -4,12 +4,14 @@ import {
   deleteMember,
   getMembers,
   getSpecificMember,
+  membersWithTrainers,
   updateMember,
 } from "../controllers/members/members.controller.js";
 
 const membersRouter = Router();
 
 membersRouter
+  .get("/trainers", membersWithTrainers)
   .get("/", getMembers)
   .post("/", addMembers)
   .get("/:id", getSpecificMember)
