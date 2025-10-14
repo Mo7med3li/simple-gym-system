@@ -1,0 +1,57 @@
+import { readFileSync, writeFileSync } from "fs";
+
+const members = JSON.parse(readFileSync("./members.json"));
+
+// get members
+export const getMembers = (req, res) => {
+  res.json({ message: "success", members });
+};
+
+// add member
+export const addMembers = (req, res) => {
+  const member = req.body;
+  member.id = members.length + 1;
+  member.status = "active";
+
+  members.push(member);
+  writeFileSync("./members.json", JSON.stringify(members));
+
+  res.json({ message: "member added successfully", member });
+};
+
+// get member by id
+export const getSpecificMember = (req, res) => {
+  let id = req.params.id;
+  const member = members.find((mem) => mem.id == id);
+  if (!member) {
+    return res.json({ message: "member not found" });
+  }
+  res.json({ message: "Success", member });
+};
+
+// update member
+export const updateMember = (req, res) => {
+  let id = req.params.id;
+  let member = req.body;
+  let index = members.findIndex((mem) => mem.id == id);
+  // handle not found members
+  if (index === -1) {
+    return res.json({ message: "member not found" });
+  }
+  members[index].name = member.name;
+  writeFileSync("./members.json", JSON.stringify(members));
+  res.json({ message: "member update successfully", member: members[index] });
+};
+
+// delete member
+export const deleteMember = (req, res) => {
+  let id = req.params.id;
+  let index = members.findIndex((mem) => mem.id == id);
+  // handle not found members
+  if (index === -1) {
+    return res.json({ message: "member not found" });
+  }
+  members.splice(index, 1);
+  writeFileSync("./members.json", JSON.stringify(members));
+  res.json({ message: "member delete successfully", members });
+};

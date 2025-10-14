@@ -4,11 +4,7 @@
     "name": "mohamed",
     "nationalId": 1234,
     "phoneNumber": "01003029886",
-    "memberShip": {
-      "from": 1,
-      "to": 2,
-      "cost": 400
-    },
+    "memberShip": { "from": 1, "to": 2, "cost": 400 },
     "status": "active",
     "trainerId": 1
   },
@@ -17,11 +13,7 @@
     "name": "ali",
     "nationalId": 1235,
     "phoneNumber": "01003029886",
-    "memberShip": {
-      "from": 1,
-      "to": 3,
-      "cost": 800
-    },
+    "memberShip": { "from": 1, "to": 3, "cost": 800 },
     "status": "active",
     "trainerId": 1
   },
@@ -30,12 +22,17 @@
     "name": "ahmed",
     "nationalId": 1235,
     "phoneNumber": "01103029886",
-    "memberShip": {
-      "from": 1,
-      "to": 2,
-      "cost": 400
-    },
+    "memberShip": { "from": 1, "to": 2, "cost": 400 },
     "status": "active",
     "trainerId": 1
+  },
+  {
+    "name": "mohamed ali",
+    "nationalId": 1238,
+    "phoneNumber": "01103029886",
+    "memberShip": { "from": 1, "to": 2, "cost": 200 },
+    "trainerId": 1,
+    "id": 4,
+    "status": "active"
   }
 ]
