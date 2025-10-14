@@ -69,3 +69,18 @@ export const membersWithTrainers = (req, res) => {
   });
   res.json({ message: "success", membersWithTrainers });
 };
+
+// check access for the gym
+export const checkAccessGym = (req, res) => {
+  let id = req.params.id;
+  let member = members.find((member) => member.id == id);
+
+  if (member.status === "active") {
+    return res.json({
+      message: "this user allowed to enter the gym",
+      member,
+    });
+  }
+
+  res.status(401).json({ message: "this use is not allowed to enter the gym" });
+};

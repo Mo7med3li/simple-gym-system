@@ -5,7 +5,7 @@
     "nationalId": 1234,
     "phoneNumber": "01003029886",
     "memberShip": { "from": 1, "to": 2, "cost": 400 },
-    "status": "active",
+    "status": "freeze",
     "trainerId": 1
   },
   {
