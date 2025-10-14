@@ -39,7 +39,13 @@ export const updateMember = (req, res) => {
   if (index === -1) {
     return res.json({ message: "member not found" });
   }
-  members[index].name = member.name;
+
+  members[index].name = member.name || members[index].name;
+  members[index].memberShip = member.memberShip || members[index].memberShip;
+  members[index].trainerId = member.trainerId || members[index].trainerId;
+  members[index].nationalId = member.nationalId || members[index].nationalId;
+  members[index].phoneNumber = member.phoneNumber || members[index].phoneNumber;
+
   writeFileSync("./members.json", JSON.stringify(members));
   res.json({ message: "member update successfully", member: members[index] });
 };
@@ -83,4 +89,16 @@ export const checkAccessGym = (req, res) => {
   }
 
   res.status(401).json({ message: "this use is not allowed to enter the gym" });
+};
+
+// soft delete
+
+export const softDelete = (req, res) => {
+  let index = members.findIndex((mem) => mem.id == req.params.id);
+  if (index == -1) {
+    res.json({ message: "the user is undefined" });
+  }
+  members[index].status = "freeze";
+  writeFileSync("./members.json", JSON.stringify(members));
+  res.json({ message: "the member is freezed", member: members[index] });
 };

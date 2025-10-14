@@ -6,12 +6,9 @@ import {
   getMembers,
   getSpecificMember,
   membersWithTrainers,
+  softDelete,
   updateMember,
 } from "../controllers/members/members.controller.js";
-import { readFileSync, writeFileSync } from "fs";
-
-const members = JSON.parse(readFileSync("./members.json"));
-const trainers = JSON.parse(readFileSync("./trainers.json"));
 
 const membersRouter = Router();
 
@@ -22,6 +19,7 @@ membersRouter
   .get("/:id", getSpecificMember)
   .put("/:id", updateMember)
   .delete("/:id", deleteMember)
-  .get("/access/:id", checkAccessGym);
+  .get("/access/:id", checkAccessGym)
+  .delete("/soft-delete/:id", softDelete);
 
 export default membersRouter;

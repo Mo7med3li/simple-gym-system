@@ -14,7 +14,7 @@
     "nationalId": 1235,
     "phoneNumber": "01003029886",
     "memberShip": { "from": 1, "to": 3, "cost": 800 },
-    "status": "active",
+    "status": "freeze",
     "trainerId": 1
   },
   {
