@@ -1,12 +1,9 @@
 import { Router } from "express";
-import { readFileSync, writeFileSync } from "fs";
-import { totalRevenues } from "../controllers/statistics/revenues.controller.js";
+import {
+  totalRevenues,
+  trainerRevenues,
+} from "../controllers/statistics/revenues.controller.js";
 
-// trainers
-const trainers = JSON.parse(readFileSync("./trainers.json"));
-
-// Members
-const members = JSON.parse(readFileSync("./members.json"));
 const staticsRouter = Router();
-staticsRouter.get("/", totalRevenues);
+staticsRouter.get("/", totalRevenues).get("/:id", trainerRevenues);
 export default staticsRouter;
