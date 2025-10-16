@@ -54,5 +54,24 @@ export const updateTrainer = (req, res) => {
   trainers[index].name = trainer.name || trainers[index].name;
   trainers[index].duration = trainer.duration || trainers[index].duration;
   writeFileSync("./trainers.json", JSON.stringify(trainers));
-  res.json({ message: "success", trainer: trainers[index] });
+  res.json({
+    message: "trainer updates successfully",
+    trainer: trainers[index],
+  });
+};
+
+// delete trainer
+export const deleteTrainer = (req, res) => {
+  let id = req.params.id;
+  const index = trainers.findIndex((train) => train.id == id);
+  if (index == -1) {
+    res.json({ message: "this trainer not found" });
+  }
+  trainers.splice(index, 1);
+
+  writeFileSync("./trainers.json", JSON.stringify(trainers));
+  res.json({
+    message: "trainer deleted successfully",
+    trainer: trainers,
+  });
 };

@@ -3,6 +3,7 @@ import { readFileSync, writeFileSync } from "fs";
 import {
   addTrainer,
   allTrainersWithMembers,
+  deleteTrainer,
   getAllTrainers,
   getSpecificTrainer,
   updateTrainer,
@@ -19,6 +20,7 @@ trainersRoute
   .get("/all", allTrainersWithMembers)
   .post("/", addTrainer)
   .get("/:id", getSpecificTrainer)
-  .put("/:id", updateTrainer);
+  .put("/:id", updateTrainer)
+  .delete("/:id", deleteTrainer);
 
 export default trainersRoute;
