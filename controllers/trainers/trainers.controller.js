@@ -75,3 +75,18 @@ export const deleteTrainer = (req, res) => {
     trainer: trainers,
   });
 };
+
+// specific trainers with his members
+export const specificTrainerWithMembers = (req, res) => {
+  let id = req.params.id;
+  let index = trainers.findIndex((train) => train.id == id);
+  if (index == -1) {
+    res.json({ message: "this trainer not found" });
+  }
+  let memberofTrainer = members.filter((mem) => mem.trainerId == id);
+  const membersWithTrainers = {
+    ...trainers[index],
+    members: memberofTrainer,
+  };
+  res.json({ message: "success", membersWithTrainers });
+};
