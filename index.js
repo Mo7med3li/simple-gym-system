@@ -1,12 +1,17 @@
 import express from "express";
 import membersRouter from "./routes/members.routes.js";
+import trainersRoute from "./routes/trainers.route.js";
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+
 // members route
 app.use("/members", membersRouter);
+
+// trainers route
+app.use("/trainers", trainersRoute);
 
 // Handle undefined routes
 app.use((_, res) => {
