@@ -15,7 +15,7 @@
     "phoneNumber": "01003029886",
     "memberShip": { "from": 1, "to": 3, "cost": 800 },
     "status": "freeze",
-    "trainerId": 1
+    "trainerId": 2
   },
   {
     "id": 3,
@@ -24,14 +24,14 @@
     "phoneNumber": "01103029886",
     "memberShip": { "from": 1, "to": 2, "cost": 400 },
     "status": "active",
-    "trainerId": 1
+    "trainerId": 4
   },
   {
     "name": "mohamed ali",
     "nationalId": 1238,
     "phoneNumber": "01103029886",
     "memberShip": { "from": 1, "to": 2, "cost": 200 },
-    "trainerId": 1,
+    "trainerId": 3,
     "id": 4,
     "status": "active"
   }
