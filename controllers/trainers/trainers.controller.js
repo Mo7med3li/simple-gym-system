@@ -42,3 +42,17 @@ export const allTrainersWithMembers = (req, res) => {
   });
   res.json({ message: "success", trainersWithHisMembers });
 };
+
+// update trainer
+export const updateTrainer = (req, res) => {
+  let id = req.params.id;
+  let trainer = req.body;
+  const index = trainers.findIndex((train) => train.id == id);
+  if (index == -1) {
+    res.json({ message: "this trainer not found" });
+  }
+  trainers[index].name = trainer.name || trainers[index].name;
+  trainers[index].duration = trainer.duration || trainers[index].duration;
+  writeFileSync("./trainers.json", JSON.stringify(trainers));
+  res.json({ message: "success", trainer: trainers[index] });
+};

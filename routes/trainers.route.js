@@ -5,6 +5,7 @@ import {
   allTrainersWithMembers,
   getAllTrainers,
   getSpecificTrainer,
+  updateTrainer,
 } from "../controllers/trainers/trainers.controller.js";
 
 const trainersRoute = Router();
@@ -17,6 +18,7 @@ trainersRoute
   .get("/", getAllTrainers)
   .get("/all", allTrainersWithMembers)
   .post("/", addTrainer)
-  .get("/:id", getSpecificTrainer);
+  .get("/:id", getSpecificTrainer)
+  .put("/:id", updateTrainer);
 
 export default trainersRoute;

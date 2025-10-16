@@ -92,7 +92,6 @@ export const checkAccessGym = (req, res) => {
 };
 
 // soft delete
-
 export const softDelete = (req, res) => {
   let index = members.findIndex((mem) => mem.id == req.params.id);
   if (index == -1) {
